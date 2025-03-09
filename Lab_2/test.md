@@ -58,6 +58,7 @@ int main() {
 
 > [!NOTE]
 > 3) Вычислите следующие выражения:
+
     a.
         - (true && true) || false             -   true
         - (false && true) || true             -   true
