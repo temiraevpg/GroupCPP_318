@@ -1,19 +1,64 @@
+/*
+ *  Лабораторная работа N2
+ *  Исследование типов данных, лексем в IDE (интегрированной среде разработки) Qt Creator
+ *
+ *  Developer:  Temiraev Petr
+ *  OS:         Windows 11
+ *  locale:     IBM866
+*/
+
 #include <iostream>
 #include <cmath>
 #include <limits>
 #include <bitset>
 
+/*
+ * при переменной char для возраста становится невозможным ввести вес
+ * ошибка появляется если возраст больше 1 цифры, вероятно из-за символа перевода каретки
+ * для проверки ошибки LOL -> 1
+*/
+#define LOL     0
+#define TASK    1
+
+const double level_1b{16};
+const double level_2b{18.5};
+const double level_3b{25};
+const double level_4b{30};
+const double level_5b{35};
+const double level_6b{40};
+
+const char age_1{19};
+const char age_2{25};
+const char age_3{35};
+const char age_4{45};
+const char age_5{55};
+
+#define SHIFT   (static_cast<double>(5))
+
+const double level_1c_male{21.4};
+const double level_1c_female{19.5};
+const double level_2c_male{21.6};
+const double level_2c_female{23.2};
+const double level_3c_male{22.9};
+const double level_3c_female{23.4};
+const double level_4c_male{25.8};
+const double level_4c_female{25.2};
+const double level_5c_male{26.6};
+const double level_6c_female{27.3};
+
 using namespace std;
-
-#define TASK    5
-
 int main()
 {
+
 #if TASK == 1
     cout << "Калькулятор для расчета идеального веса" << endl;
     cout << endl;
     cout << "Введите возраст (полных лет): ";
+#if LOL == 0
+    short age;
+#elif LOL == 1
     char age;
+#endif
     cin >> age;
     cout << "Введите вес (килограммы): ";
     short weight;
@@ -45,22 +90,22 @@ int main()
 
     if (method == 'b') {
         cout << "Согласно ИМТ у вас ";
-        if (imt <= 16) {
+        if (imt <= level_1b) {
             cout << "выраженный дефицит массы.";
         }
-        else if (imt > 16 and imt <= 18.5) {
+        else if (imt > level_1b and imt <= level_2b) {
             cout << "недостаточная (дефицит) масса тела.";
         }
-        else if (imt > 18.5 and imt <= 25) {
+        else if (imt > level_2b and imt <= level_3b) {
             cout << "нормальная масса тела.";
         }
-        else if (imt > 25 and imt <= 30) {
+        else if (imt > level_3b and imt <= level_4b) {
             cout << "избыточная масса тела (предожирение).";
         }
-        else if (imt > 30 and imt <= 35) {
+        else if (imt > level_4b and imt <= level_5b) {
             cout << "ожирение первой степени.";
         }
-        else if (imt >35 and imt <= 40) {
+        else if (imt > level_5b and imt <= level_6b) {
             cout << "ожирение второй степени.";
         }
         else {
@@ -70,12 +115,12 @@ int main()
 
     if (method == 'c') {
         cout << "Согласно ИМТ с учетом возраста у вас ";
-        if (age >= 19 and age < 25) {
+        if (age >= age_1 and age < age_2) {
             if (gender) {   // если мужчина
-                if (imt < 21.4) {
+                if (imt < level_1c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 21.4 and imt < 21.4+5) {
+                else if (imt >= level_1c_male and imt < level_1c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -83,10 +128,10 @@ int main()
                 }
             }
             else  {
-                if (imt < 19.5) {
+                if (imt < level_1c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 19.5 and imt < 19.5+5) {
+                else if (imt >= level_1c_female and imt < level_1c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -94,12 +139,12 @@ int main()
                 }
             }
         }
-        else if (age >= 25 and age < 35) {
+        else if (age >= age_2 and age < age_3) {
             if (gender) {   // если мужчина
-                if (imt < 21.6) {
+                if (imt < level_2c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 21.6 and imt < 21.6+5) {
+                else if (imt >= level_2c_male and imt < level_2c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -107,10 +152,10 @@ int main()
                 }
             }
             else  {
-                if (imt < 23.2) {
+                if (imt < level_2c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 23.2 and imt < 23.2+5) {
+                else if (imt >= level_2c_female and imt < level_2c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -118,12 +163,12 @@ int main()
                 }
             }
         }
-        else if (age >= 35 and age < 45) {
+        else if (age >= age_3 and age < age_4) {
             if (gender) {   // если мужчина
-                if (imt < 22.9) {
+                if (imt < level_3c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 22.9 and imt < 22.9+5) {
+                else if (imt >= level_3c_male and imt < level_3c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -131,10 +176,10 @@ int main()
                 }
             }
             else  {
-                if (imt < 23.4) {
+                if (imt < level_3c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 23.4 and imt < 23.4+5) {
+                else if (imt >= level_3c_female and imt < level_3c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -142,12 +187,12 @@ int main()
                 }
             }
         }
-        else if (age >= 45 and age < 55) {
+        else if (age >= age_4 and age < age_5) {
             if (gender) {   // если мужчина
-                if (imt < 25.8) {
+                if (imt < level_4c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 25.8 and imt < 25.8+5) {
+                else if (imt >= level_4c_male and imt < level_4c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -155,10 +200,10 @@ int main()
                 }
             }
             else  {
-                if (imt < 25.2) {
+                if (imt < level_4c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 25.2 and imt < 25.2+5) {
+                else if (imt >= level_4c_female and imt < level_4c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -166,12 +211,12 @@ int main()
                 }
             }
         }
-        else if ( age >= 55) {
+        else if ( age >= age_5) {
             if (gender) {   // если мужчина
-                if (imt < 26.6) {
+                if (imt < level_5c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 26.6 and imt < 26.6+5) {
+                else if (imt >= level_5c_male and imt < level_5c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -179,10 +224,10 @@ int main()
                 }
             }
             else  {
-                if (imt < 27.3) {
+                if (imt < level_6c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= 27.3 and imt < 27.3+5) {
+                else if (imt >= level_6c_female and imt < level_6c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {

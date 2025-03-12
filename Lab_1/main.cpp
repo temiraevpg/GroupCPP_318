@@ -1,3 +1,13 @@
+/*
+ *  Лабораторная работа N1
+ *  Исследование С++ комментариев, библиотеки ввода-вывода в IDE (интегрированной
+ *  среде разработки) Qt Creator
+ *
+ *  Developer:  Temiraev Petr
+ *  OS:         Windows 11
+ *  locale:     IBM866
+*/
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
