@@ -15,9 +15,8 @@
 /*
  * при переменной char для возраста становится невозможным ввести вес
  * ошибка появляется если возраст больше 1 цифры, вероятно из-за символа перевода каретки
- * для проверки ошибки LOL -> 1
+ * по этому используется short
 */
-#define LOL     0
 #define TASK    1
 
 const double level_1b{16};
@@ -27,11 +26,11 @@ const double level_4b{30};
 const double level_5b{35};
 const double level_6b{40};
 
-const char age_1{19};
-const char age_2{25};
-const char age_3{35};
-const char age_4{45};
-const char age_5{55};
+const unsigned char age_1{19};
+const unsigned char age_2{25};
+const unsigned char age_3{35};
+const unsigned char age_4{45};
+const unsigned char age_5{55};
 
 #define SHIFT   (static_cast<double>(5))
 
@@ -54,11 +53,7 @@ int main()
     cout << "Калькулятор для расчета идеального веса" << endl;
     cout << endl;
     cout << "Введите возраст (полных лет): ";
-#if LOL == 0
     short age;
-#elif LOL == 1
-    char age;
-#endif
     cin >> age;
     cout << "Введите вес (килограммы): ";
     short weight;
@@ -90,22 +85,22 @@ int main()
 
     if (method == 'b') {
         cout << "Согласно ИМТ у вас ";
-        if (imt <= level_1b) {
+        if (imt < level_1b) {
             cout << "выраженный дефицит массы.";
         }
-        else if (imt > level_1b and imt <= level_2b) {
+        else if (imt < level_2b) {
             cout << "недостаточная (дефицит) масса тела.";
         }
-        else if (imt > level_2b and imt <= level_3b) {
+        else if (imt < level_3b) {
             cout << "нормальная масса тела.";
         }
-        else if (imt > level_3b and imt <= level_4b) {
+        else if (imt < level_4b) {
             cout << "избыточная масса тела (предожирение).";
         }
-        else if (imt > level_4b and imt <= level_5b) {
+        else if (imt < level_5b) {
             cout << "ожирение первой степени.";
         }
-        else if (imt > level_5b and imt <= level_6b) {
+        else if (imt < level_6b) {
             cout << "ожирение второй степени.";
         }
         else {
@@ -120,7 +115,7 @@ int main()
                 if (imt < level_1c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_1c_male and imt < level_1c_male + SHIFT) {
+                else if (imt < level_1c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -131,7 +126,7 @@ int main()
                 if (imt < level_1c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_1c_female and imt < level_1c_female + SHIFT) {
+                else if (imt < level_1c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -144,7 +139,7 @@ int main()
                 if (imt < level_2c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_2c_male and imt < level_2c_male + SHIFT) {
+                else if (imt < level_2c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -155,7 +150,7 @@ int main()
                 if (imt < level_2c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_2c_female and imt < level_2c_female + SHIFT) {
+                else if (imt < level_2c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -168,7 +163,7 @@ int main()
                 if (imt < level_3c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_3c_male and imt < level_3c_male + SHIFT) {
+                else if (imt < level_3c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -179,7 +174,7 @@ int main()
                 if (imt < level_3c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_3c_female and imt < level_3c_female + SHIFT) {
+                else if (imt < level_3c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -192,7 +187,7 @@ int main()
                 if (imt < level_4c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_4c_male and imt < level_4c_male + SHIFT) {
+                else if (imt < level_4c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -203,7 +198,7 @@ int main()
                 if (imt < level_4c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_4c_female and imt < level_4c_female + SHIFT) {
+                else if (imt < level_4c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -216,7 +211,7 @@ int main()
                 if (imt < level_5c_male) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_5c_male and imt < level_5c_male + SHIFT) {
+                else if (imt < level_5c_male + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
@@ -227,7 +222,7 @@ int main()
                 if (imt < level_6c_female) {
                     cout << "недостаточная (дефицит) масса тела.";
                 }
-                else if (imt >= level_6c_female and imt < level_6c_female + SHIFT) {
+                else if (imt < level_6c_female + SHIFT) {
                     cout << "нормальная масса тела.";
                 }
                 else {
