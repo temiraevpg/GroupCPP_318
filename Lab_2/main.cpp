@@ -17,7 +17,9 @@
  * ошибка появляется если возраст больше 1 цифры, вероятно из-за символа перевода каретки
  * по этому используется short
 */
-#define TASK    1
+#define TASK    2
+
+#define BITS    8
 
 const double level_1b{16};
 const double level_2b{18.5};
@@ -274,15 +276,15 @@ int main()
     cout << "Числовой диапазон unsigned long long: \t" << "от " << 0 << " до " << ULONG_LONG_MAX << endl;
 
     cout << endl;
-    cout << "Числовой диапазон signed char: \t\t" << "от " << bitset<8>(CHAR_MIN & UCHAR_MAX) << " до " << bitset<8>(CHAR_MAX) << endl;
-    cout << "Числовой диапазон signed short: \t" << "от " << bitset<16>(SHRT_MIN & USHRT_MAX) << " до " << bitset<16>(SHRT_MAX) << endl;
-    cout << "Числовой диапазон signed int: \t\t" << "от " << bitset<32>(INT_MIN & UINT_MAX) << " до " << bitset<32>(INT_MAX) << endl;
-    cout << "Числовой диапазон signed long long: \t" << "от " << bitset<64>(LONG_LONG_MIN) << " до " << bitset<64>(LONG_LONG_MAX) << endl;
+    cout << "Числовой диапазон signed char: \t\t" << "от " << bitset<sizeof(char)*BITS>(CHAR_MIN & UCHAR_MAX) << " до " << bitset<sizeof(char)*BITS>(CHAR_MAX) << endl;
+    cout << "Числовой диапазон signed short: \t" << "от " << bitset<sizeof(short)*BITS>(SHRT_MIN & USHRT_MAX) << " до " << bitset<sizeof(short)*BITS>(SHRT_MAX) << endl;
+    cout << "Числовой диапазон signed int: \t\t" << "от " << bitset<sizeof(int)*BITS>(INT_MIN & UINT_MAX) << " до " << bitset<sizeof(int)*BITS>(INT_MAX) << endl;
+    cout << "Числовой диапазон signed long long: \t" << "от " << bitset<sizeof(long long)*BITS>(LONG_LONG_MIN) << " до " << bitset<sizeof(long long)*BITS>(LONG_LONG_MAX) << endl;
     cout << endl;
-    cout << "Числовой диапазон unsigned char: \t" << "от " << bitset<8>(0) << " до " << bitset<8>(UCHAR_MAX) << endl;
-    cout << "Числовой диапазон unsigned short: \t" << "от " << bitset<16>(0) << " до " << bitset<16>(USHRT_MAX) << endl;
-    cout << "Числовой диапазон unsigned int: \t" << "от " << bitset<32>(0) << " до " << bitset<32>(UINT_MAX) << endl;
-    cout << "Числовой диапазон unsigned long long: \t" << "от " << bitset<64>(0) << " до " << bitset<64>(ULONG_LONG_MAX) << endl;
+    cout << "Числовой диапазон unsigned char: \t" << "от " << bitset<sizeof(char)*BITS>(0) << " до " << bitset<sizeof(char)*BITS>(UCHAR_MAX) << endl;
+    cout << "Числовой диапазон unsigned short: \t" << "от " << bitset<sizeof(short)*BITS>(0) << " до " << bitset<sizeof(short)*BITS>(USHRT_MAX) << endl;
+    cout << "Числовой диапазон unsigned int: \t" << "от " << bitset<sizeof(int)*BITS>(0) << " до " << bitset<sizeof(int)*BITS>(UINT_MAX) << endl;
+    cout << "Числовой диапазон unsigned long long: \t" << "от " << bitset<sizeof(long long)*BITS>(0) << " до " << bitset<sizeof(long long)*BITS>(ULONG_LONG_MAX) << endl;
 
 #endif
 
@@ -428,7 +430,7 @@ int main()
     cin >> shift;
     number = number << shift;
     cout << "DEC: " << number << endl;
-    cout << "BIN: " << bitset<32>(number) << endl;
+    cout << "BIN: " << bitset<sizeof(int)*BITS>(number) << endl;
     cout << "HEX: " << hex << uppercase << showbase << number << endl;
     cout << "OCT: " << oct << number << endl;
     cout << dec << endl;
