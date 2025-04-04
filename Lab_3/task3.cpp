@@ -49,9 +49,9 @@ auto initializatoin(void) -> void{
     cout << " cValue = " << cValue3;
     cout << " lValue = " << lValue3 << endl;
 
-    cout << "Global " << number << endl;
-
     int number{200};
+
+    cout << "Global " << ::number << endl;
     cout << "Local " << number << endl;
 
 }

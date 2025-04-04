@@ -10,7 +10,7 @@
 #include <iostream>
 #include <tasks.h>
 
-#define UNIT    7
+#define UNIT    6
 
 int main()
 {
@@ -64,4 +64,5 @@ int main()
 #elif UNIT == 7
     elevator();
 #endif
+    system("pause");
 }
