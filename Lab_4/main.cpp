@@ -13,11 +13,23 @@
 
 using namespace std;
 
-#define UNIT    9
+enum class ProgrEnum {
+    Task_1,
+    Task_2,
+    Task_3,
+    Task_4,
+    Task_5,
+    Task_6,
+    Task_7,
+    Task_8,
+    Task_9
+};
+
+const ProgrEnum progrEnum = ProgrEnum::Task_1;
 
 int main()
 {
-#if UNIT == 1
+if (progrEnum == ProgrEnum::Task_1) {
     fill_buf(mersenne_buf, MERSENNE_BUF_SIZE);
     for(int i = 0; i < MERSENNE_BUF_SIZE; i++){
         cout << mersenne_buf[i] << " \t- индекс " << i << '\n';
@@ -25,7 +37,8 @@ int main()
     cout << '\n';
     cout << max_ret(mersenne_buf, MERSENNE_BUF_SIZE) << " \t- максимальный элемент" << '\n';
     cout << min_ret(mersenne_buf, MERSENNE_BUF_SIZE) << " \t- минимальный элемент" << '\n';
-#elif UNIT == 2
+}
+else if(progrEnum == ProgrEnum::Task_2) {
     create_matrix(bool_matrix[0], BOOL_MATRIX_SIZE);
     print_bool_matrix(bool_matrix[0], BOOL_MATRIX_SIZE);
     cout << '\n';
@@ -33,26 +46,33 @@ int main()
     print_matrix(random_matrix[0], RANDOM_MATRIX_SIZE);
     cout << '\n';
     cout << "Сумма составляет = " << calculate_summ(random_matrix[0], RANDOM_MATRIX_SIZE) << '\n';
-#elif UNIT == 3
+}
+else if(progrEnum == ProgrEnum::Task_3) {
     print_ASCII();
-#elif UNIT == 4
+}
+else if(progrEnum == ProgrEnum::Task_4) {
     cout << iteration_factorial(5) << '\n';
     cout << recursion_factorial(5) << '\n';
     cout << iteration_fibonacci(10) << '\n';
     print_piramid(15);
-#elif UNIT == 5
+}
+else if(progrEnum == ProgrEnum::Task_5) {
     multi_massive();
-#elif UNIT == 6
+}
+else if(progrEnum == ProgrEnum::Task_6) {
     task_6a();
     cout <<"\n\n";
     task_6b();
-#elif UNIT == 7
+}
+else if(progrEnum == ProgrEnum::Task_7) {
     phase_test();
-#elif UNIT == 8
+}
+else if(progrEnum == ProgrEnum::Task_8) {
     ptr_func();
-#elif UNIT == 9
+}
+else if(progrEnum == ProgrEnum::Task_9) {
     task_9();
-#endif
+}
     system("pause");
     return 0;
 }

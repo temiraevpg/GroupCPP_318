@@ -93,17 +93,19 @@ int main() {
 
 > [!WARNING]
 > d) неправильный код:
-> Повторяет С???
 
 ``` C++
 #include <iostream>
 int main() {
-short value;
-short *p;
-p = value;
-*p = value;
-*p = &value;
-*p = *&value;
+char cvalue;
+int ivalue;
+short * ps;
+char *pc;
+void *pv {(int*)(cvalue)};
+void *pv_1 {(char*)(&ivalue)};
+std::cout << "pv->int" << *static_cast<int>(pv) << std::endl;
+int *pi = {(int)(pv)};
+std::cout << "pi=" << pv_1 << std::endl;
 }
 ```
 
@@ -112,13 +114,17 @@ p = value;
 
 ``` C++
 #include <iostream>
+
 int main() {
-    short value;
-    short *p;
-    p = &value;
-    *p = value;
-    *p = value;
-    *p = *&value;
+    char cvalue;
+    int ivalue;
+    short * ps;
+    char *pc;
+    void *pv {(int*)(cvalue)};
+    void *pv_1 {(char*)(&ivalue)};
+    std::cout << "pv->int" << static_cast<int*>(pv) << std::endl;
+    int *pi = {(int*)(pv)};
+    std::cout << "pi=" << pv_1 << std::endl;
 }
 ```
 
@@ -203,5 +209,127 @@ int main() {
     int value = 45;
     int *ptr = &value;
     *ptr = value;
+}
+```
+
+Исправьте ошибки можно что-то добавлять а удалять нельзя. Что выведет программа:
+
+> [!WARNING]
+> a) неправильный код:
+
+``` C++
+int main() {
+    std::cout << "Hi !\n";
+    exit;
+    std::cout << 3
+} 
+```
+
+> [!TIP]
+> исправленный код
+
+``` C++
+#include <iostream>
+int main() {
+    std::cout << "Hi !\n";
+    std::cout << 3;
+    exit(0);
+} 
+```
+
+
+> [!WARNING]
+> b) неправильный код:
+
+``` C++
+int main() {
+    switch (2) {
+    case 1
+        std::cout << 1 << '\n';
+        case 2
+        std::cout << 2 << '\n'
+        case
+        std::cout << 3 << '\n';
+        case 4
+        std::cout << 4 << '\n'
+        default:
+        std::cout << 5 << '\n';
+```
+
+> [!TIP]
+> исправленный код
+
+``` C++
+#include <iostream>
+int main() {
+    switch (2) {
+        case 1:
+            std::cout << 1 << '\n';
+            break;
+        case 2:
+            std::cout << 2 << '\n';
+            break;
+        case 3:
+            std::cout << 3 << '\n';
+            break;
+        case 4:
+            std::cout << 4 << '\n';
+            break;
+        default:
+            std::cout << 5 << '\n';
+    }
+}
+```
+
+
+> [!WARNING]
+> c) неправильный код:
+
+``` C++
+#include <iostream>
+const int size = 5;
+void Func(int ptr, int size) {
+    for (int i = 0; i < size; ++i)
+        std::cout << ptr[i] << '\n'; // вывод элементов масива в цикле
+    ptr = 5; // первому элементу массива присваиваем значение 5
+    std::cout << '\n';
+    for (int i = 0; i < size; ++i)
+        std::cout << *ptr++ << '\n'; // вывод элементов масива в цикле
+    *ptr = 55; // первому элементу массива присваиваем значение 55
+    std::cout << '\n';
+} 
+int main() {
+    int array[];
+    Func(array, size);
+    for (int i = 0; i < size; ++i)
+    std::cout << array[i] << '\n';
+}
+```
+
+> [!TIP]
+> исправленный код
+
+``` C++
+#include <iostream>
+const int size = 5;
+void Func(int *ptr, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << ptr[i] << '\n'; // вывод элементов масива в цикле
+    }
+    *ptr = 5; // первому элементу массива присваиваем значение 5
+    std::cout << '\n';
+    for (int i = 0; i < size; ++i) {
+        std::cout << *ptr++ << '\n'; // вывод элементов масива в цикле
+    }
+    *(ptr-5) = 55; // первому элементу массива присваиваем значение 55
+    std::cout << '\n';
+}
+int main() {
+    int array[size] = {1, 2, 3, 4, 5};
+    Func(array, size);
+    for (int i = 0; i < size; ++i) {
+        std::cout << array[i] << '\n';
+    }
+    system("pause");
 }
 ```
