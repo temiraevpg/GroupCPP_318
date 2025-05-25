@@ -1,9 +1,13 @@
 #ifndef TASKS_H
 #define TASKS_H
 
+// Закоментировать для использования передачи Callback черз указатель
+#define STL
+
 /* первая задача */
 #define MERSENNE_BUF_SIZE   10
 extern unsigned int mersenne_buf[MERSENNE_BUF_SIZE];
+extern unsigned int my_buf[MERSENNE_BUF_SIZE];
 
 void fill_buf(unsigned int *buf, unsigned int len);
 unsigned int max_ret(unsigned int *buf, unsigned int len);

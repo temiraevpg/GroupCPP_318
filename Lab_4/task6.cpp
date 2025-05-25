@@ -4,6 +4,17 @@ using namespace std;
 
 constexpr int array_size{6};
 
+int check_input(void) {
+    if(cin.fail()){
+        cin.clear();
+        cin.ignore(32767, '\n');
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 void task_6a(void){
     int m;
     double fx;
@@ -12,39 +23,18 @@ void task_6a(void){
     do{
         cout << "Введите целое число m = ";
         cin >> m;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(32767, '\n');
-        }
-        else{
-            break;
-        }
-    }while(true);
+    }while(check_input());
 
     do{
         cout << "Введите дробное число fx = ";
         cin >> fx;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(32767, '\n');
-        }
-        else{
-            break;
-        }
-    }while(true);
+    }while(check_input());
 
     do{
         cout << "Введите символ cht = ";
         cin.ignore(32767, '\n');
         cin >> cht;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(32767, '\n');
-        }
-        else{
-            break;
-        }
-    }while(true);
+    }while(check_input());
 
     cout << '\n';
     cout << "Использование & оператор: \n";
@@ -53,9 +43,9 @@ void task_6a(void){
     cout  << "Адрес cht = " << static_cast<void*>(&cht) << '\n';  // иначе адрес char интерпретируется как строка
     cout << '\n';
     cout << "Используя операторы & и * : \n";
-    cout  << "Адрес m = " << *&m << '\n';
-    cout  << "Адрес fx = " << *&fx << '\n';
-    cout  << "Адрес cht = " << *&cht << '\n';
+    cout  << "Значение по адресу m = " << *&m << '\n';
+    cout  << "Значение по адресу fx = " << *&fx << '\n';
+    cout  << "Значение по адресу cht = " << *&cht << '\n';
 
     int *addr_m = &m;
     double *addr_fx = &fx;
@@ -67,9 +57,9 @@ void task_6a(void){
     cout  << "Адрес cht = " << static_cast<void*>(addr_cht) << '\n';  // иначе адрес char интерпретируется как строка
     cout << '\n';
     cout << "Использование только оператора указателя:\n";
-    cout  << "Адрес m = " << *addr_m << '\n';
-    cout  << "Адрес fx = " << *addr_fx << '\n';
-    cout  << "Адрес cht = " << *addr_cht << '\n';
+    cout  << "Значение по адресу m = " << *addr_m << '\n';
+    cout  << "Значение по адресу fx = " << *addr_fx << '\n';
+    cout  << "Значение по адресу cht = " << *addr_cht << '\n';
 }
 
 void task_6b(void){

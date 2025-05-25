@@ -10,7 +10,7 @@ unsigned int iteration_factorial(int n){
     }
 
     unsigned int result = 1;
-    for (int i = 1; i <= n; ++i) {
+    for (auto i = 1; i <= n; i++) {
         result *= i;
     }
     return result;
@@ -50,21 +50,21 @@ void print_piramid(int n){
     /* расчет смещения первого элемента */
     int shift = 0;                       // смещение в пробелах (-1 - от края)
     int temp = 0;                        // временная переменная
-    for(int i = 1; temp < n; i++){
+    for(auto i = 1; temp < n; i++){
         temp += i;
         shift++;
     }
 
     int step = 1;
     temp = 0;
-    for(int i = 1; temp < n; i++){
+    for(auto i = 1; temp < n; i++){
         /* печать отступа */
-        for(int j = 0; j < shift; j++){
+        for(auto j = 0; j < shift; j++){
             cout << " ";
         }
         shift--;
         /* печать уменьшающихся цифр */
-        for(int j = step; j > 0; j--){
+        for(auto j = step; j > 0; j--){
             cout << j << " ";
         }
         step++;

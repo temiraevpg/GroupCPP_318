@@ -4,7 +4,7 @@ using namespace std;
 
 constexpr unsigned int buffer_size = 12;
 
-char buffer[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C'};
+char buffer[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', '\0'};
 
 void swap_even_and_odd(char* buf, unsigned int len) {
     if(len % 2) {

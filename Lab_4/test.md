@@ -117,14 +117,14 @@ std::cout << "pi=" << pv_1 << std::endl;
 
 int main() {
     char cvalue;
-    int ivalue;
+    int ivalue = 10;
     short * ps;
     char *pc;
     void *pv {(int*)(cvalue)};
     void *pv_1 {(char*)(&ivalue)};
     std::cout << "pv->int" << static_cast<int*>(pv) << std::endl;
     int *pi = {(int*)(pv)};
-    std::cout << "pi=" << pv_1 << std::endl;
+    std::cout << "pi=" << *(int*)pv_1 << std::endl;
 }
 ```
 
@@ -152,18 +152,35 @@ int main() {
 #include <iostream>
 int main() {
     short value, value1(3);
-    //short &ref; - необходимо сразу инициализировать, это не указатель, который можно просто объявить
+    short &ref = value1; - необходимо сразу инициализировать, это не указатель, который можно просто объявить
     short &ref1 = value1; // константный далее поменять не получится
     const short &ref2 = 78;
     ref1 = 3;
     *&value = 4;
-    //const *short const p3; - не ясен замысел
+    const short* const p3 = &ref2;
 }
 ```
 
 
 > [!WARNING]
 > f) неправильный код:
+
+``` C++
+int main() {
+    short value = 13;
+    short value_1 = 100;
+    short *ptr = &value;
+    std::cout << &value << '\n';
+    std::cout << (value +=1) << '\n';
+    *ptr = 9;
+    std::cout << (value = value_1 + *ptr) << '\n';
+    std::cout << "Результат: " << value << '\n';
+    return 0;
+}
+```
+
+> [!TIP]
+> исправленный код
 
 ``` C++
 #include <iostream>
@@ -178,14 +195,6 @@ int main() {
     std::cout << "Результат: " << value << '\n';
     return 0;
 }
-
-```
-
-> [!TIP]
-> исправленный код
-
-``` C++
-Все работает ???
 ```
 
 
@@ -205,10 +214,14 @@ ptr = value;
 > исправленный код
 
 ``` C++
+#include <iostream>
 int main() {
-    int value = 45;
-    int *ptr = &value;
-    *ptr = value;
+    int value1 {45};
+    int value2 {63};
+    int *ptr = &value2;
+    //*ptr = &value;
+    //ptr = value;
+    std::cout << "Результат value1 + value2 : " << value1 + *ptr << '\n';
 }
 ```
 

@@ -2,8 +2,8 @@
 
 using namespace std;
 
-constexpr int phase_len = 4;
-char phase_buf[phase_len]{'U','V','W','N'};
+constexpr int phase_len = 5;
+char phase_buf[phase_len]{'U','V','W','N','\0'};
 
 void swap_phase(char &a, char &b){
     char tmp = a;

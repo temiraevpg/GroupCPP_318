@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tasks.h>
 
 using namespace std;
 
@@ -16,9 +17,16 @@ int my_xor(int a, int b) {
     return (a ^ b);
 }
 
+#ifdef STL
+#include <functional>
+int multi_func(function<int(int, int)> op, int x, int y) {
+    return op(x, y);
+}
+#else
 int multi_func(int(*op)(int,int), int x, int y) {
     return op(x, y);
 }
+#endif
 
 void ptr_func(void) {
     int type;
@@ -67,6 +75,10 @@ void ptr_func(void) {
         break;
     }
 
+#ifdef STL
+    cout << multi_func(function<int(int, int)>(fun), a, b) << '\n';
+#else
     cout << multi_func(fun, a, b) << '\n';
+#endif
 }
 

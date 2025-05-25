@@ -37,6 +37,15 @@ if (progrEnum == ProgrEnum::Task_1) {
     cout << '\n';
     cout << max_ret(mersenne_buf, MERSENNE_BUF_SIZE) << " \t- максимальный элемент" << '\n';
     cout << min_ret(mersenne_buf, MERSENNE_BUF_SIZE) << " \t- минимальный элемент" << '\n';
+    cout << '\n';
+
+    fill_buf(my_buf, MERSENNE_BUF_SIZE);
+    for(int i = 0; i < MERSENNE_BUF_SIZE; i++){
+        cout << my_buf[i] << " \t- индекс " << i << '\n';
+    }
+    cout << '\n';
+    cout << max_ret(my_buf, MERSENNE_BUF_SIZE) << " \t- максимальный элемент" << '\n';
+    cout << min_ret(my_buf, MERSENNE_BUF_SIZE) << " \t- минимальный элемент" << '\n';
 }
 else if(progrEnum == ProgrEnum::Task_2) {
     create_matrix(bool_matrix[0], BOOL_MATRIX_SIZE);
