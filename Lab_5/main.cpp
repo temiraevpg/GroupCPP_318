@@ -12,7 +12,7 @@
 
 using namespace std;
 
-#define TASK    8
+#define TASK    4
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
 #elif TASK == 3
     task3();
 #elif TASK == 4
-    string data = "2q9pd2e";
+    string data = "4аб5с4s";
     cout << unpack(data);
 #elif TASK == 5
     string data = "\tFinita \t \t\t  la commedia\t\t  \t\t!";
